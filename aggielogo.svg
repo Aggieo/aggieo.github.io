@@ -1,0 +1,22 @@
+<svg width="100%" viewBox="0 0 500 670" xmlns="http://www.w3.org/2000/svg"><defs><mask id="imagine-text-gaps-r26e5y" maskUnits="userSpaceOnUse"><rect x="0" y="0" width="500" height="670" fill="white"/><rect x="175.37945556640625" y="278.2772521972656" width="152.2772979736328" height="78.53767395019531" fill="black" rx="2"/><rect x="232.74032592773438" y="360.8887939453125" width="34.51932334899902" height="16.96307373046875" fill="black" rx="2"/></mask></defs>
+  
+
+  <rect width="500" height="500" fill="#0f6e56" style="fill:rgb(15, 110, 86);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <circle cx="500" cy="0" r="220" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.06" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.06;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <circle cx="0" cy="500" r="160" fill="none" stroke="#ffffff" stroke-width="1" opacity="0.04" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.04;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- wave marks — fully visible, centered around y=195 -->
+  <path d="M110 175 Q155 140 200 175 Q245 210 290 175 Q335 140 390 165" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:7px;stroke-linecap:round;stroke-linejoin:round;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <path d="M110 213 Q155 178 200 213 Q245 248 290 213 Q335 178 390 203" fill="none" stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity="0.55" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:5px;stroke-linecap:round;stroke-linejoin:round;opacity:0.55;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+  <path d="M110 251 Q155 216 200 251 Q245 286 290 251 Q335 216 390 241" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.25" style="fill:none;stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:3.5px;stroke-linecap:round;stroke-linejoin:round;opacity:0.25;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- thin rule -->
+  <line x1="148" y1="286" x2="352" y2="286" stroke="#ffffff" stroke-width="0.8" opacity="0.25" mask="url(#imagine-text-gaps-r26e5y)" style="fill:rgb(0, 0, 0);stroke:rgb(255, 255, 255);color:rgb(0, 0, 0);stroke-width:0.8px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.25;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+  <!-- name -->
+  <text x="250" y="340" text-anchor="middle" font-family="'DM Serif Display', serif" font-size="52" fill="#ffffff" font-style="italic" style="fill:rgb(255, 255, 255);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;DM Serif Display&quot;, serif;font-size:52px;font-weight:400;font-style:italic;text-anchor:middle;dominant-baseline:auto">Aggie</text>
+
+  <!-- subtitle -->
+  <text x="250" y="374" text-anchor="middle" font-family="'DM Mono', monospace" font-size="13" fill="#9fe1cb" letter-spacing="0.18em" style="fill:rgb(159, 225, 203);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;DM Mono&quot;, monospace;font-size:13px;font-weight:400;text-anchor:middle;dominant-baseline:auto">PAN</text>
+</svg>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2023 Rural Domestic Sewage Management – Preliminary Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e1c2a;
+    --water: #1b6ca8;
+    --water-light: #4a9fd4;
+    --water-pale: #d4eaf7;
+    --green: #2d7a4f;
+    --green-light: #5aac78;
+    --green-pale: #d6f0e0;
+    --sand: #f5f0e8;
+    --amber: #c8860a;
+    --white: #fefefe;
+    --rule: #c2d8ea;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--sand);
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+  }
+
+  .poster {
+    width: 1100px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 8px 60px rgba(0,0,0,0.15);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--ink);
+    color: var(--white);
+    padding: 48px 60px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 24px,
+      rgba(255,255,255,0.025) 24px,
+      rgba(255,255,255,0.025) 25px
+    );
+  }
+  .header-inner { position: relative; z-index: 1; }
+  .header-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--water-light);
+    border: 1px solid var(--water-light);
+    padding: 4px 12px;
+    margin-bottom: 14px;
+    display: inline-block;
+  }
+  .header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    max-width: 680px;
+  }
+  .header-title span { color: var(--water-light); }
+  .header-subtitle {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    margin-top: 10px;
+    letter-spacing: 0.5px;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  .header-meta {
+    text-align: right;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.8;
+  }
+
+  .header-stats {
+    display: flex;
+    gap: 0;
+    margin-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+  }
+  .stat-item {
+    flex: 1;
+    padding-right: 36px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    margin-right: 36px;
+  }
+  .stat-item:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--water-light);
+    line-height: 1;
+  }
+  .stat-unit {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    display: inline;
+    margin-left: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── CONTENT ── */
+  .body { padding: 0; }
+
+  /* Section label */
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--water);
+    margin-bottom: 10px;
+  }
+
+  /* ── ROW 1: context + location ── */
+  .row-1 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .panel {
+    padding: 36px 44px;
+  }
+  .panel:first-child {
+    border-right: 1px solid var(--rule);
+  }
+
+  .panel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .panel p {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: #3a4a5a;
+  }
+
+  /* Map placeholder */
+  .map-placeholder {
+    background: var(--water-pale);
+    border: 2px dashed var(--water);
+    border-radius: 4px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--water);
+    margin-top: 16px;
+  }
+  .map-placeholder .map-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+  .map-placeholder p {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--water);
+  }
+
+  /* Village chips */
+  .village-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+  .village-chip {
+    background: var(--water-pale);
+    border: 1px solid var(--water);
+    border-radius: 2px;
+    font-size: 11.5px;
+    font-family: 'Space Mono', monospace;
+    padding: 3px 10px;
+    color: var(--water);
+  }
+  .village-chip.highlight {
+    background: var(--water);
+    color: var(--white);
+    font-weight: 700;
+  }
+
+  /* ── ROW 2: Design process ── */
+  .row-2 {
+    border-bottom: 1px solid var(--rule);
+    padding: 36px 44px;
+    background: var(--ink);
+    color: var(--white);
+  }
+  .row-2 .section-label { color: var(--water-light); }
+  .row-2 .panel-title { color: var(--white); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 20px;
+  }
+  .step {
+    padding: 20px 24px 20px 0;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    margin-right: 24px;
+  }
+  .step:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: rgba(255,255,255,0.1);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .step-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--water-light);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+  .step p {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ── drawings shared ── */
+  .drawing-card {
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .drawing-placeholder {
+    background: var(--water-pale);
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--water);
+    position: relative;
+  }
+  .drawing-placeholder.green-bg {
+    background: var(--green-pale);
+    color: var(--green);
+  }
+  .drawing-placeholder .ph-icon {
+    font-size: 32px;
+    opacity: 0.4;
+    margin-bottom: 8px;
+  }
+  .drawing-placeholder p {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: inherit;
+    opacity: 0.7;
+  }
+  .drawing-info {
+    padding: 12px 14px;
+  }
+  .drawing-title {
+    font-weight: 600;
+    font-size: 12.5px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .drawing-desc {
+    font-size: 11px;
+    color: #5a7080;
+    line-height: 1.5;
+  }
+
+  /* ── ROW 3 revised: drawings full-width 3-col ── */
+  .drawings-section {
+    border-bottom: 1px solid var(--rule);
+    padding: 36px 44px;
+  }
+  .drawings-main-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1.3fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+    align-items: stretch;
+  }
+
+  /* Left col — portrait Sewerage Layout Plan */
+  .drawing-col-left .drawing-card { height: 100%; display: flex; flex-direction: column; }
+  .drawing-col-left .drawing-placeholder { flex: 1; min-height: 440px; }
+
+  /* Middle col — two landscape drawings stacked */
+  .drawing-col-mid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .drawing-col-mid .drawing-card { flex: 1; display: flex; flex-direction: column; }
+  .drawing-col-mid .drawing-placeholder { height: 140px; flex-shrink: 0; }
+
+  /* Right col — field photos */
+  .drawing-col-right {
+    display: flex;
+    flex-direction: column;
+  }
+  .fieldwork-col-header { margin-bottom: 14px; }
+  .photos-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+  .photo-slot {
+    background: #e8e0d4;
+    border-radius: 3px;
+    flex: 1;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8a7a6a;
+    border: 1px dashed #b8a898;
+  }
+  .photo-slot .cam-icon { font-size: 22px; opacity: 0.4; margin-bottom: 5px; }
+  .fieldwork-note {
+    margin-top: 12px;
+    background: var(--green-pale);
+    border-left: 3px solid var(--green);
+    padding: 10px 14px;
+    font-size: 11.5px;
+    color: var(--green);
+    line-height: 1.6;
+  }
+
+  /* ── ROW 5: construction + investment ── */
+  .row-5 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .construction-panel {
+    padding: 36px 44px;
+    border-right: 1px solid var(--rule);
+  }
+  .site-photo-slot {
+    background: #e8e0d4;
+    border-radius: 4px;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #8a7a6a;
+    border: 1px dashed #b8a898;
+    margin-top: 18px;
+  }
+  .site-photo-slot .cam-icon { font-size: 28px; opacity: 0.4; margin-bottom: 6px; }
+  .site-bullets { margin-top: 16px; }
+  .site-bullets li {
+    font-size: 12.5px;
+    color: #3a4a5a;
+    line-height: 1.7;
+    list-style: none;
+    padding-left: 16px;
+    position: relative;
+  }
+  .site-bullets li::before {
+    content: '▸';
+    position: absolute; left: 0;
+    color: var(--water);
+    font-size: 10px;
+    top: 3px;
+  }
+
+  /* Investment */
+  .investment-panel { padding: 36px 44px; }
+  .budget-bar-wrap { margin-top: 18px; }
+  .budget-item { margin-bottom: 14px; }
+  .budget-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    margin-bottom: 4px;
+    color: #3a4a5a;
+  }
+  .budget-label strong { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--ink); }
+  .budget-bar {
+    height: 8px;
+    background: var(--water-pale);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .budget-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--water);
+  }
+  .budget-fill.green { background: var(--green); }
+  .opex-table {
+    margin-top: 16px;
+    width: 100%;
+    font-size: 12px;
+    border-collapse: collapse;
+  }
+  .opex-table th {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--water);
+    text-align: left;
+    padding: 6px 0;
+    border-bottom: 2px solid var(--rule);
+  }
+  .opex-table td {
+    padding: 7px 0;
+    border-bottom: 1px solid var(--rule);
+    color: #3a4a5a;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+  }
+  .opex-table tr:last-child td { border-bottom: none; }
+
+  /* ── FOOTER ── */
+  .footer {
+    padding: 28px 44px;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-left {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: rgba(255,255,255,0.9);
+  }
+  .footer-left span { color: var(--water-light); }
+  .footer-right {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: rgba(255,255,255,0.35);
+    text-align: right;
+    line-height: 1.8;
+  }
+  .contrib-badge {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .contrib-tag {
+    font-size: 10px;
+    font-family: 'Space Mono', monospace;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.5);
+    padding: 2px 9px;
+    border-radius: 2px;
+  }
+
+  @media print {
+    body { background: white; }
+    .poster { box-shadow: none; }
+  }
+
+  /* --- portfolio revision --- */
+  .drawings-rebuilt { display: grid; grid-template-columns: 1fr 300px; gap: 18px; align-items: start; margin-top: 18px; }
+  .info-line { font-size: 12.5px; line-height: 1.75; color: var(--ink); padding: 5px 0; border-bottom: 1px solid var(--rule); }
+  .info-line:last-child { border-bottom: none; }
+  .info-line strong { color: var(--water); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <!-- ══ HEADER ══ -->
+  <div class="header">
+    <div class="header-inner">
+      <div class="header-top">
+        <div>
+          <div class="badge">Environmental Engineering · 2023</div>
+          <h1 class="header-title">Rural Domestic<br><span>Sewage Management</span></h1>
+          <p class="header-subtitle">Preliminary design for wastewater collection & treatment infrastructure across a rural township in western Zhejiang Province — supporting China's "Beautiful Village" initiative and achieving ≥95% administrative village coverage.</p>
+        </div>
+        <div class="header-meta">
+          Western Zhejiang Province<br>
+          Rural township — 10 villages<br>
+          One village as case study<br>
+          <br>
+          Zhejiang University<br>
+          Energy Engineering Design Institute<br>
+          <br>
+          Yizhou Pan · Junior Environmental Engineer
+        </div>
+      </div>
+
+      <div class="header-stats">
+        <div class="stat-item">
+          <div class="stat-num">10 <span class="stat-unit">villages</span></div>
+          <div class="stat-label">One township &#183; full coverage</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">101 <span class="stat-unit">HH</span></div>
+          <div class="stat-label">New connections &#183; case-study village</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">75.1<span class="stat-unit">%</span></div>
+          <div class="stat-label">Household connection rate (post-project)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">40 <span class="stat-unit">t/d</span></div>
+          <div class="stat-label">New treatment terminal capacity (A²O)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">101&#8211;124<span class="stat-unit">m</span></div>
+          <div class="stat-label">Elevation range surveyed (gravity routing)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 1: Context + Location ══ -->
+  <div class="row-1">
+    <div class="panel">
+      <div class="section-label">Project Context</div>
+      <div class="panel-title">Background & Policy Mandate</div>
+      <p>The host city has pursued systematic wastewater improvement since 2014 under Zhejiang's "Five-Water Co-governance" programme. This project responds to the provincial <em>Strong Foundation, Double Standard</em> Action Plan (2021–2025), which mandates ≥95% administrative village coverage and ≥95% effluent compliance by 2025.</p>
+      <p style="margin-top:10px;">One village is carried through as the case-study representative. It spans roughly 6 km² across four natural hamlets, and only about a third of registered households were connected before this project. The focus hamlet had no sewer network at all — domestic wastewater discharged directly to natural watercourses, which is exactly the condition the provincial programme targets.</p>
+    </div>
+    <div class="panel">
+      <div class="section-label">Design Basis</div>
+      <div class="panel-title">Scope &amp; Standards</div>
+      <div style="margin-top:14px;">
+        <div class="info-line"><strong>Coverage</strong> &nbsp;10 administrative villages across one township, to the provincial &#8805;95% coverage target</div>
+        <div class="info-line"><strong>Effluent standard</strong> &nbsp;DB33/973-2021 Class II (Zhejiang rural domestic sewage)</div>
+        <div class="info-line"><strong>Treatment</strong> &nbsp;A&#178;O terminal, 40 m&#179;/d, serving the case-study hamlet</div>
+        <div class="info-line"><strong>Collection</strong> &nbsp;Gravity network routed along existing roads to limit excavation and reinstatement</div>
+        <div class="info-line"><strong>Stormwater</strong> &nbsp;LID measures integrated to keep rainwater out of the foul network</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 2: Design Process ══ -->
+  <div class="row-2">
+    <div class="section-label">Design & Field Work Process</div>
+    <div class="panel-title" style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;margin-bottom:0;">Six-Week Field Investigation to Construction Supervision</div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Field Survey</div>
+        <p>Six weeks of on-site investigation: terrain and topographic survey, elevation profiling across the case-study hamlet (101–124 m range), drainage pattern mapping.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Household Visits</div>
+        <p>Door-to-door interviews with 101 new-connection households. Assessed existing septic tanks, kitchen facilities, and wastewater generation. Site photos documented throughout.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Preliminary Design</div>
+        <p>Authored full design report: network layout, longitudinal profiles, A²O treatment system, LID integration, energy and cost analysis.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Construction Supervision</div>
+        <p>Provided on-site design support during construction — resolving drawing queries, clarifying specifications, and ensuring pipe installation aligned with design intent.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW 3: Engineering Drawings + Field Photos ══ -->
+  <div class="drawings-section">
+    <div class="section-label">Key Engineering Drawings &amp; Field Work</div>
+    <div class="panel-title" style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">Technical Deliverables · Case-Study Hamlet</div>
+
+    <div class="drawings-rebuilt">
+
+      <div class="drawing-card">
+        <div style="padding:0;overflow:hidden;background:#fff;">
+          <img src="lid_swale_section.png" alt="Bioretention swale typical cross-section, redrawn"
+               style="width:100%;height:auto;display:block;">
+        </div>
+        <div class="drawing-info">
+          <div class="drawing-title">Low-Impact Development — Bioretention Swale</div>
+          <div class="drawing-desc">
+            Integrated stormwater measure: rain–pollutant separation, vegetated retention and infiltration,
+            keeping stormwater out of the foul network. Redrawn by the author from own design work and
+            translated for portfolio use. The sewerage layout plan and longitudinal profile produced for
+            this hamlet remain the property of the design institute and the project owner and are not
+            reproduced here.
+          </div>
+        </div>
+      </div>
+
+      <div class="drawing-col-right">
+        <div class="fieldwork-col-header">
+          <div class="section-label" style="margin-bottom:4px;">Field Work Documentation</div>
+          <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--ink);line-height:1.2;">Six Weeks On-Site<br>Household Surveys</div>
+        </div>
+        <div class="photos-stack">
+          <div class="photo-slot" style="overflow:hidden;"><img src="field_manholes.jpg" alt="Household connection chambers surveyed on site" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        </div>
+        <div class="fieldwork-note">
+          ▸ Elevation range 101–124 m surveyed<br>
+          ▸ 101 households visited for connection assessment<br>
+          ▸ Septic tanks, grease traps &amp; drainage channels mapped
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══ ROW 5: Construction + Investment ══ -->
+  <div class="row-5">
+    <div class="construction-panel">
+      <div class="section-label">Construction Supervision</div>
+      <div class="panel-title" style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">On-Site Residency</div>
+      <div class="site-photo-slot" style="overflow:hidden;padding:0;"><img src="field_pipelaying.jpg" alt="Sewer pipe installation during construction" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <ul class="site-bullets" style="margin-top:14px;">
+        <li>Provided on-site design support throughout the construction phase</li>
+        <li>Resolved drawing queries and clarified specifications for contractors</li>
+        <li>Ensured pipe installation and manhole construction aligned with design intent</li>
+      </ul>
+    </div>
+
+    <div class="investment-panel">
+      <div class="section-label">Investment & Operations</div>
+      <div class="panel-title" style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;">Cost Structure & Annual O&M</div>
+      <div class="budget-bar-wrap">
+        <div class="budget-item">
+          <div class="budget-label"><span>Collection network</span><strong>90% of capital cost</strong></div>
+          <div class="budget-bar"><div class="budget-fill" style="width:90%"></div></div>
+        </div>
+        <div class="budget-item">
+          <div class="budget-label"><span>Treatment terminal (40 m&#179;/d)</span><strong>10% of capital cost</strong></div>
+          <div class="budget-bar"><div class="budget-fill green" style="width:10%"></div></div>
+        </div>
+      </div>
+      <p style="font-size:11.5px;line-height:1.6;color:var(--ink);opacity:.75;margin:10px 0 14px;">
+        The split is the central planning lesson of rural sewerage: the collection network, not the
+        treatment plant, dominates capital cost — so connection density and gravity routing govern
+        whether a scheme is affordable. Absolute figures belong to the project owner and are not published here.
+      </p>
+      <table class="opex-table">
+        <tr><th>Annual O&M Item</th><th>Share</th></tr>
+        <tr><td>Labour</td><td>44%</td></tr>
+        <tr><td>Electricity</td><td>35%</td></tr>
+        <tr><td>Sludge disposal</td><td>21%</td></tr>
+        <tr><td><strong>Main operating cost driver</strong></td><td><strong>Labour</strong></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer">
+    <div>
+      <div class="footer-left">2023 Rural Domestic Sewage Management · <span>Western Zhejiang Province</span></div>
+      <div class="contrib-badge">
+        <span class="contrib-tag">Design Report</span>
+        <span class="contrib-tag">Sewerage Layout Plan</span>
+        <span class="contrib-tag">Longitudinal Profile</span>
+        <span class="contrib-tag">LID Design</span>
+        <span class="contrib-tag">6-Week Field Survey</span>
+        <span class="contrib-tag">Construction Supervision</span>
+      </div>
+    </div>
+    <div class="footer-right">
+      Zhejiang University Energy Engineering<br>
+      Design Institute · 2023<br>
+      Client: municipal ecology &amp; environment bureau<br>
+      Standard: DB33/973-2021 Class II
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
