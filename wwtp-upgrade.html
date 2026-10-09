@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=1200">
 <title>Municipal WWTP Standards Upgrade – Project Poster</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -272,7 +272,24 @@
     color: var(--muted); font-style: italic;
     border-left: 2px solid var(--border); padding-left: 10px;
   }
+
+  /* --- mobile: keep the poster at its design width so nothing is clipped --- */
+  @media (max-width: 1260px) {
+    body { display: block; padding: 0; align-items: initial; justify-content: initial; }
+    .poster { width: 1200px; margin: 0; border-radius: 0; border-left: none; border-right: none; }
+  }
 </style>
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Aggie Pan — Environmental Engineer">
+<meta property="og:title" content="Municipal WWTP Standards Upgrade — 5,000 m³/d">
+<meta property="og:description" content="Standards upgrade and renovation of a 5,000 m³/d municipal wastewater treatment plant: AO→AAO conversion, new denitrification deep-bed filter, and a 10% cut in plant electricity use.">
+<meta property="og:url" content="https://aggieo.github.io/wwtp-upgrade.html">
+<meta property="og:image" content="https://aggieo.github.io/og-wwtp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Standards upgrade and renovation of a 5,000 m³/d municipal wastewater treatment plant: AO→AAO conversion, new denitrification deep-bed filter, and a 10% cut in plant electricity use.">
 </head>
 <body>
 <div class="poster">
